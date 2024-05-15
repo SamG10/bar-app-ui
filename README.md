@@ -1,39 +1,16 @@
-# bar-app-ui
+# Bar'App UI
 
-This template should help get you started developing with Vue 3 in Vite.
+# Pré-requis
 
-## Recommended IDE Setup
+- Node.js 20.x.x
+- npm
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Installation
 
-## Type Support for `.vue` Imports in TS
+1. Clone the repository from GitHub: git clone https://github.com/SamG10/bar-app-ui.git
+2. Navigate to the project directory: cd bar-app-ui
+3. Install dependencies: npm install
+4. Start the development server: npm run dev
+5. The application will be available at: http://localhost:5173
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Enjoy !
