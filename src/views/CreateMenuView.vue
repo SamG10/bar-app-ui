@@ -62,7 +62,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <h2>Create category</h2>
     <form @submit.prevent="createCategory">
       <div class="form-group col-md-3">
@@ -74,7 +74,7 @@ onMounted(() => {
           v-model="newCategoryName"
           required
         />
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary mt-2">Create</button>
       </div>
     </form>
 
@@ -89,16 +89,20 @@ onMounted(() => {
           v-model="newCocktail.name"
           required
         />
-        <label for="cocktailName">Ingredients:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="cocktailIngredients"
-          v-model="newCocktail.ingredients"
-          required
-        />
-        <small id="help" class="form-text text-muted">Separate ingredients with commas</small>
-        <label for="cocktailName">image url:</label>
+        <div class="d-flex flex-column">
+          <label for="cocktailName">Ingredients:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cocktailIngredients"
+            v-model="newCocktail.ingredients"
+            required
+          />
+          <small id="help" class="form-text text-muted mb-3"
+            >Separate ingredients with commas</small
+          >
+        </div>
+        <label for="cocktailImageUrl">image url:</label>
         <input
           type="text"
           class="form-control"
@@ -107,7 +111,7 @@ onMounted(() => {
           required
         />
 
-        <label for="cocktailName">price S:</label>
+        <label for="cocktailPriceS">price S:</label>
         <input
           type="number"
           min="1"
@@ -118,7 +122,7 @@ onMounted(() => {
           required
         />
 
-        <label for="cocktailName">price M:</label>
+        <label for="cocktailPriceM">price M:</label>
         <input
           type="number"
           min="1"
@@ -129,7 +133,7 @@ onMounted(() => {
           required
         />
 
-        <label for="cocktailName">price L:</label>
+        <label for="cocktailPriceL">price L:</label>
         <input
           type="number"
           min="1"
@@ -146,9 +150,10 @@ onMounted(() => {
             {{ category.name }}
           </option>
         </select>
+        <small id="help" class="form-text text-muted">You can select multiple categories</small>
       </div>
 
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-primary mt-2">Create</button>
     </form>
   </div>
 </template>
