@@ -128,6 +128,7 @@ onMounted(() => {
           :src="cocktailItem.cocktail.image_url"
           :alt="cocktailItem.cocktail.name"
           width="150px"
+          height="150px"
           class="me-3"
         />
         <h3 class="me-3 w-50">{{ cocktailItem.cocktail.name }}</h3>

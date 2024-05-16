@@ -76,7 +76,7 @@ onMounted(() => {
         >
           <div class="d-flex align-items-center">
             <div class="me-4">
-              <img :src="cocktail.image_url" :alt="cocktail.name" width="150px" />
+              <img :src="cocktail.image_url" :alt="cocktail.name" width="150px" height="150px" />
             </div>
             <div class="d-flex justify-content-between w-100">
               <div class="d-flex flex-column">
