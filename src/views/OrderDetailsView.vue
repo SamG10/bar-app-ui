@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import axiosInstance from '../api/config'
 import { onMounted, ref, watch, watchEffect } from 'vue'
 
-export type Step = 'PREPARATION' | 'ASSEMBLY' | 'DRESSAGE' | 'COMPLETED'
+export type Step = 'ASSEMBLY' | 'DRESSAGE' | 'COMPLETED'
 
 export interface CocktailItem {
   id: string
@@ -57,8 +57,6 @@ const fetchCocktailsOrder = async () => {
 
 const fetchOrderDetails = async () => {
   try {
-    console.log('fetch order details')
-
     const response = await axiosInstance.get(`/order/${orderId}`, {
       headers: {
         Authorization: `Bearer ${token}`

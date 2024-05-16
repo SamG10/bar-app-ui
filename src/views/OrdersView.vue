@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useOrderStore } from '@/stores/order'
 import router from '@/router'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 const isAuthenticated = computed(() => !!localStorage.getItem('token'))
 const orderStore = useOrderStore()
 
 onMounted(() => {
   orderStore.fetchOrders()
+  startPolling()
 })
 
 const goToOrderDetails = (orderId: string) => {
@@ -15,6 +16,29 @@ const goToOrderDetails = (orderId: string) => {
     router.push({ name: 'orderDetails', params: { id: orderId } })
   } else {
     alert('You must have an account to access this resource')
+  }
+}
+
+onUnmounted(() => {
+  stopPolling()
+})
+
+const pollingInterval = ref<number | null>(null)
+
+const startPolling = () => {
+  if (!pollingInterval.value) {
+    pollingInterval.value = setInterval(async () => {
+      console.log('polling...')
+
+      await orderStore.fetchOrders()
+    }, 10000) // Check for updates every 5 seconds
+  }
+}
+
+const stopPolling = () => {
+  if (pollingInterval.value) {
+    clearInterval(pollingInterval.value)
+    pollingInterval.value = null
   }
 }
 </script>

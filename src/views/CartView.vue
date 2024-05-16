@@ -4,27 +4,26 @@ import { ref } from 'vue'
 
 const cartStore = useCartStore()
 
-const errorMessage = ref<string | null>(null)
 const orderSuccess = ref<boolean>(false)
+const orderNumber = ref<number | null>(null)
+const orderMessage = ref<string>('')
 
 const placeOrder = async () => {
   try {
-    await cartStore.placeOrder()
+    const newOrder = await cartStore.placeOrder()
     orderSuccess.value = true
-    errorMessage.value = null
+    orderNumber.value = newOrder.number
+    orderMessage.value = `Order placed successfully! Your order number is ${newOrder.number}`
   } catch (error) {
-    errorMessage.value = 'Failed to place order. Please try again.'
     orderSuccess.value = false
+    orderMessage.value = 'Failed to place order. Please try again.'
   }
 }
 </script>
 
 <template>
   <div class="p-2">
-    <div v-if="cartStore.items.length === 0">
-      <p>Your cart is empty</p>
-    </div>
-    <div class="itemCard" v-else>
+    <div class="itemCard">
       <div v-for="(item, index) in cartStore.items" :key="index" class="cart-item">
         <div class="d-flex flex-row align-items-center">
           <img :src="item.image_url" alt="cocktail_image" width="100px" class="me-4" />
@@ -36,9 +35,9 @@ const placeOrder = async () => {
         <h4>Total: {{ cartStore.totalPrice }} €</h4>
       </div>
       <button class="btn btn-info" @click="placeOrder">Ordered</button>
-      <div v-if="orderSuccess" class="order-success">Order placed successfully!</div>
-      <div v-if="errorMessage" class="error-message">
-        {{ errorMessage }}
+      <div v-if="orderSuccess" class="order-success">{{ orderMessage }}</div>
+      <div v-if="!orderMessage" class="message">
+        {{ orderMessage }}
       </div>
     </div>
   </div>
@@ -61,7 +60,8 @@ const placeOrder = async () => {
 }
 
 .error-message {
-  color: red;
+  color: black;
+  font-weight: bold;
   margin-top: 10px;
 }
 </style>
