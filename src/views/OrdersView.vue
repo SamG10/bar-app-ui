@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useOrderStore } from '@/stores/order'
 import router from '@/router'
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const isAuthenticated = computed(() => !!localStorage.getItem('token'))
 const orderStore = useOrderStore()

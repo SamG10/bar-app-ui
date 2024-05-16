@@ -5,7 +5,7 @@ import { computed } from 'vue'
 
 const authStore = useAuthStore()
 const cartStore = useCartStore()
-const isAuthenticated = computed(() => authStore.isAuthenticated)
+const isAuthenticated = computed(() => !!localStorage.getItem('token'))
 
 const logout = () => {
   authStore.logout()
