@@ -28,8 +28,6 @@ const pollingInterval = ref<number | null>(null)
 const startPolling = () => {
   if (!pollingInterval.value) {
     pollingInterval.value = setInterval(async () => {
-      console.log('polling...')
-
       await orderStore.fetchOrders()
     }, 10000) // Check for updates every 5 seconds
   }

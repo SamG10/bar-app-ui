@@ -19,11 +19,6 @@ const router = createRouter({
       name: 'menu',
       component: () => import('../views/MenuView.vue')
     },
-    // {
-    //   path: '/orderTracker',
-    //   name: 'orderTracker',
-    //   component: () => import('../views/OrderTrackerView.vue')
-    // }
     {
       path: '/cart',
       name: 'cart',
@@ -38,6 +33,11 @@ const router = createRouter({
       path: '/order/:id',
       name: 'orderDetails',
       component: () => import('../views/OrderDetailsView.vue')
+    },
+    {
+      path: '/createMenu',
+      name: 'createMenu',
+      component: () => import('../views/CreateMenuView.vue')
     }
   ]
 })

@@ -5,7 +5,7 @@ import { computed } from 'vue'
 
 const authStore = useAuthStore()
 const cartStore = useCartStore()
-const isAuthenticated = computed(() => !!localStorage.getItem('token'))
+const isAuthenticated = computed(() => authStore.isAuthenticated)
 
 const logout = () => {
   authStore.logout()
@@ -21,6 +21,7 @@ const logout = () => {
     <div class="href d-flex align-items-center justify-content-around">
       <a href="/menu">Menu</a>
       <a href="/orders">Orders</a>
+      <a href="/createMenu" v-if="isAuthenticated">Create Menu</a>
     </div>
     <div class="d-flex">
       <div class="me-4 d-flex align-items-center">
@@ -63,9 +64,10 @@ a {
   color: #0d2c3e;
   text-decoration: none;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .href {
-  width: 400px;
+  width: 600px;
 }
 </style>
